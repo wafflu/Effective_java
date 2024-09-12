@@ -48,11 +48,44 @@ public class NutritionFacts {
       this.servings = servings;
     }
 
-    pulbic Bulider calories(int val) {
+    pulbic Builder calories(int val) {
       calories = val;
       return this;
     }
 
+    public Builder fat(int val) {
+        fat = val;
+        return this;
+    }
     
+    public Builder sodium(int val) {
+        sodium = val;
+        return this;
+    }
+    
+    public Builder carbohydrate(int val) {
+        carbohydrate = val;
+        return this;
+    }
+
+    public NutritionFacts build() {
+        return new NutritionFacts(this);
+    }
+  }
+
+  private NutritionFacts(Builder builder){
+    servingSize = builder.servingSize;
+    servings = builder.servings;
+    calories = builder.calories;
+    fat = builder.fat;
+    sodium = builder.sodium;
+    carbohydrate = builder.carbohydrate;
+  }
 }
 ```
+
+빌더 패턴은(파이썬과 스칼라에 있는)명명된 선택적 매개변수(named optional parameters)를 흉내 낸 것
+계층적으로 설계된 클래스와 함꼐 사용하기 좋다.
+
+객체를 생성하려면 먼저 빌더부터 만들어야하며 되도록 매개변수4개 이상이엇을떄 값어치를 한다
+매개변수가 많으면 빌더 사용하자
